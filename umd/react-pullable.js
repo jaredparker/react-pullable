@@ -407,6 +407,7 @@ var Pullable = function (_React$Component) {
 
     _this.refresh = function () {
       _this.ignoreTouches = true;
+      _this.setState({ status: 'pulling', height: _this.props.distThreshold });
       _this.setState({ status: 'refreshing' }, _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_C_Users_parke_Desktop_Coding_Projects_react_pullable_node_modules_babel_runtime_regenerator___default.a.mark(function _callee() {
         return __WEBPACK_IMPORTED_MODULE_0_C_Users_parke_Desktop_Coding_Projects_react_pullable_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -452,6 +453,10 @@ var Pullable = function (_React$Component) {
     window.addEventListener('touchstart', this.onTouchStart);
     window.addEventListener('touchmove', this.onTouchMove, { passive: false });
     window.addEventListener('touchend', this.onTouchEnd);
+
+    if (this.props.refreshOnMount) {
+      this.refresh();
+    }
   };
 
   Pullable.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -524,6 +529,7 @@ var Pullable = function (_React$Component) {
 
 Pullable.defaultProps = {
   className: 'pullable',
+  refreshOnMount: false,
   centerSpinner: true,
   fadeSpinner: true,
   rotateSpinner: true,
@@ -544,6 +550,7 @@ Pullable.defaultProps = {
 
 Pullable.propTypes = {
   onRefresh: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.func.isRequired,
+  refreshOnMount: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.bool,
   className: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.string,
   centerSpinner: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.bool,
   fadeSpinner: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.bool,

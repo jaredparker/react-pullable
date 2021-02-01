@@ -80,6 +80,7 @@ var Pullable = function (_React$Component) {
 
     _this.refresh = function () {
       _this.ignoreTouches = true;
+      _this.setState({ status: 'pulling', height: _this.props.distThreshold });
       _this.setState({ status: 'refreshing' }, _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
         return _regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
@@ -125,6 +126,10 @@ var Pullable = function (_React$Component) {
     window.addEventListener('touchstart', this.onTouchStart);
     window.addEventListener('touchmove', this.onTouchMove, { passive: false });
     window.addEventListener('touchend', this.onTouchEnd);
+
+    if (this.props.refreshOnMount) {
+      this.refresh();
+    }
   };
 
   Pullable.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -197,6 +202,7 @@ var Pullable = function (_React$Component) {
 
 Pullable.defaultProps = {
   className: 'pullable',
+  refreshOnMount: false,
   centerSpinner: true,
   fadeSpinner: true,
   rotateSpinner: true,
@@ -217,6 +223,7 @@ Pullable.defaultProps = {
 
 Pullable.propTypes = process.env.NODE_ENV !== "production" ? {
   onRefresh: PropTypes.func.isRequired,
+  refreshOnMount: PropTypes.bool,
   className: PropTypes.string,
   centerSpinner: PropTypes.bool,
   fadeSpinner: PropTypes.bool,

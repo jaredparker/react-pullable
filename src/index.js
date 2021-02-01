@@ -18,6 +18,8 @@ class Pullable extends React.Component {
     window.addEventListener('touchstart', this.onTouchStart);
     window.addEventListener('touchmove', this.onTouchMove, { passive: false });
     window.addEventListener('touchend', this.onTouchEnd);
+
+    if( this.props.refreshOnMount ){ this.refresh(); }
   }
 
   componentWillUnmount() {
@@ -79,6 +81,7 @@ class Pullable extends React.Component {
 
   refresh = () => {
     this.ignoreTouches = true;
+    this.setState({ status: 'pulling', height: this.props.distThreshold });
     this.setState({ status: 'refreshing' }, async () => {
       await this.props.onRefresh();
 
@@ -148,6 +151,7 @@ class Pullable extends React.Component {
 
 Pullable.defaultProps = {
   className: 'pullable',
+  refreshOnMount: false,
   centerSpinner: true,
   fadeSpinner: true,
   rotateSpinner: true,
@@ -166,6 +170,7 @@ Pullable.defaultProps = {
 
 Pullable.propTypes = {
   onRefresh: PropTypes.func.isRequired,
+  refreshOnMount: PropTypes.bool,
   className: PropTypes.string,
   centerSpinner: PropTypes.bool,
   fadeSpinner: PropTypes.bool,

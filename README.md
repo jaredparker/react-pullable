@@ -29,6 +29,7 @@ To prevent Chrome overscroll set `overscroll-behavior-y: contain [or] none;` on 
 | Prop | Type | Default | Description |
 | :--- | :--- | :--- | :--- |
 | className | String | `pullable` | Class applied to the component |
+| RefreshOnMount | Boolean | `false` | Call onRefresh when mounted |
 | centerSpinner | Boolean | `true` | Is the spinner vertically centered or top-aligned? |
 | fadeSpinner | Boolean | `true` | Does the spinner fade in/out when pulled? |
 | rotateSpinner | Boolean | `true` | Does the spinner rotate when pulled? |
