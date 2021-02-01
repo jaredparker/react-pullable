@@ -1,6 +1,7 @@
 # 🙋 React Pullable
 
 Simple, customizable React component for pull to refresh on touch devices.
+*fork: stops spinning after getting data*
 
 [Play with the demo](https://sconstantinides.github.io/react-pullable/)
 
@@ -20,7 +21,7 @@ To prevent Chrome overscroll set `overscroll-behavior-y: contain [or] none;` on 
 
 | Prop | Type | Description |
 | :--- | :--- | :--- |
-| onRefresh | Function | Called when a pull is triggered |
+| onRefresh | Promise | Called when a pull is triggered |
 
 ### Optional props
 
@@ -37,7 +38,6 @@ To prevent Chrome overscroll set `overscroll-behavior-y: contain [or] none;` on 
 | popDuration | Number | `200` | Time to expand the spinner before it rotates (`0` = skip pop) |
 | distThreshold | Number | `spinnerSize * 3` | Distance where refresh is triggered |
 | resistance | Number | `2.5` | How hard it is to pull down |
-| refreshDuration | Number | `1000` | Time spent spinning before resetting (in ms) |
 | resetDuration | Number | `400` | Time to reset (in ms) |
 | resetEase | String | `cubic-bezier(0.215, 0.61, 0.355, 1)` | Ease when resetting |
 | shouldPullToRefresh | Function | `() => window.scrollY <= 0` | When to allow pulling |

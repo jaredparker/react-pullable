@@ -80,13 +80,11 @@ class Pullable extends React.Component {
   refresh = () => {
     this.ignoreTouches = true;
     this.setState({ status: 'refreshing' }, () => {
-      this.props.onRefresh();
+      await this.props.onRefresh();
 
-      this.refreshCompletedTimeout = setTimeout(() => {
-        this.setState({ status: 'refreshCompleted', height: 0 }, () => {
-          this.reset(this.props.resetDuration);
-        });
-      }, this.props.refreshDuration);
+      this.setState({ status: 'refreshCompleted', height: 0 }, () => {
+        this.reset(this.props.resetDuration);
+      });
     });
   };
 
@@ -160,7 +158,6 @@ Pullable.defaultProps = {
   popDuration: 200,
   distThreshold: 72,
   resistance: 2.5,
-  refreshDuration: 1000,
   resetDuration: 400,
   resetEase: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
   shouldPullToRefresh: () => window.scrollY <= 0,
@@ -180,7 +177,6 @@ Pullable.propTypes = {
   popDuration: PropTypes.number,
   distThreshold: PropTypes.number,
   resistance: PropTypes.number,
-  refreshDuration: PropTypes.number,
   resetDuration: PropTypes.number,
   resetEase: PropTypes.string,
   shouldPullToRefresh: PropTypes.func,
