@@ -1,7 +1,4 @@
-/demo/dist
-/es
-/lib
+/src
 /node_modules
-/umd
 npm-debug.log*
 .DS_Store

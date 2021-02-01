@@ -1,6 +1,7 @@
 # 🙋 React Pullable
 
 Simple, customizable React component for pull to refresh on touch devices.
+
 *fork: stops spinning after getting data*
 
 [Play with the demo](https://sconstantinides.github.io/react-pullable/)

@@ -79,7 +79,7 @@ class Pullable extends React.Component {
 
   refresh = () => {
     this.ignoreTouches = true;
-    this.setState({ status: 'refreshing' }, () => {
+    this.setState({ status: 'refreshing' }, async () => {
       await this.props.onRefresh();
 
       this.setState({ status: 'refreshCompleted', height: 0 }, () => {
